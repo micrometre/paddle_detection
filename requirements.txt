@@ -1,0 +1,14 @@
+# Requirements for PaddleDetection Vehicle License Plate Recognition
+# Minimal dependencies for the example
+
+# Core dependencies
+paddlepaddle-gpu>=2.4.0,<2.7.0  # Use paddlepaddle for CPU-only
+paddleocr>=2.6.0,<2.8.0
+opencv-python>=4.5.0
+numpy>=1.19.0
+Pillow>=8.0.0
+PyYAML>=5.4.0
+
+# Optional dependencies for better performance
+matplotlib>=3.3.0
+scipy>=1.7.0
