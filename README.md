@@ -1,11 +1,16 @@
 # PaddleDetection UK Vehicle License Plate Recognition
 
-A complete *4. **Run the demo**
+complete 
+
+# 4. **Run the demo**
+```bash
+
 python deploy/pipeline/pipeline.py \
     --config deploy/pipeline/config/infer_cfg_ppvehicle.yml \
     --image_file test_data/1.jpg \
     --output_dir output
 
+```
 # 5. Test CPU compatibility
 python test_cpu.py
 ```se plate recognition system** using PaddleDetection's vehicle detection pipeline, adapted for **UK license plates** and based on the [official tutorial](https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.8.1/deploy/pipeline/docs/tutorials/ppvehicle_plate_en.md).
