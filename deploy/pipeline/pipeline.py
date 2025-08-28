@@ -19,7 +19,6 @@ try:
     print(f"PaddlePaddle version: {paddle.__version__}")
 except ImportError:
     print("PaddlePaddle not installed. Installing...")
-    os.system("pip install paddlepaddle-gpu")
     import paddle
 
 try:
@@ -27,7 +26,6 @@ try:
     print("PaddleOCR is available")
 except ImportError:
     print("PaddleOCR not installed. Installing...")
-    os.system("pip install paddleocr")
     from paddleocr import PaddleOCR
 
 class VehiclePlateDetector:
