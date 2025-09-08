@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Minimal PaddleDetection UK Vehicle License Plate Recognition Pipeline
 Based on PaddleDetection/deploy/pipeline/pipeline.py
@@ -57,8 +56,11 @@ class VehiclePlateDetector:
         """Mock vehicle detection - in real implementation, use PP-YOLOE"""
         # For this minimal example, we'll assume the entire image contains a vehicle
         h, w = image.shape[:2]
-        # Return a bounding box covering most of the image
-        return [(int(w*0.1), int(h*0.1), int(w*0.9), int(h*0.9))]
+        # Return a bounding box covering a smaller portion of the image (tighter around vehicle)
+        # Adjust these values to make the box smaller or larger:
+        # Format: (left_margin, top_margin, right_margin, bottom_margin) as percentages
+        #return [(int(w*0.1), int(h*0.1), int(w*0.9), int(h*0.9))]
+        return [(int(w*0.2), int(h*0.3), int(w*0.8), int(h*0.8))]
         
     def detect_license_plates(self, image, vehicle_boxes):
         """Detect and recognize license plates in vehicle regions"""
