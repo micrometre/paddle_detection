@@ -126,9 +126,28 @@ class VehiclePlateDetector:
             pts = np.array(bbox, np.int32).reshape((-1, 1, 2))
             cv2.polylines(image, [pts], True, (0, 0, 255), 2)
             
-            # Add text
+            # Add text with background for better readability
             text = f"{result['license_plate']} ({result['confidence']:.2f})"
-            cv2.putText(image, text, (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+            
+            # Get text size
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            font_scale = 0.8
+            thickness = 2
+            (text_width, text_height), baseline = cv2.getTextSize(text, font, font_scale, thickness)
+            
+            # Position text above the vehicle box with padding
+            text_x = x1
+            text_y = y1 - 15
+            
+            # Draw background rectangle
+            padding = 5
+            cv2.rectangle(image, 
+                         (text_x - padding, text_y - text_height - padding),
+                         (text_x + text_width + padding, text_y + padding),
+                         (0, 0, 0), -1)  # Black background
+            
+            # Draw text
+            cv2.putText(image, text, (text_x, text_y), font, font_scale, (255, 255, 255), thickness)  # White text
             
         cv2.imwrite(output_path, image)
         print(f"Results saved to: {output_path}")
